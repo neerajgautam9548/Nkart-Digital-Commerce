@@ -18,6 +18,10 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASSWORD,  // SMTP Key
   },
 });
+console.log("EMAIL_USER:", process.env.EMAIL_USER);
+console.log("EMAIL_PASSWORD:", process.env.EMAIL_PASSWORD);
+console.log("SENDER_EMAIL:", process.env.SENDER_EMAIL);
+
 
 const sendOTP = async (email, otp) => {
   try {
