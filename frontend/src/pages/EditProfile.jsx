@@ -112,7 +112,7 @@ const Edit = () => {
 
     // }
 
-   
+
 
     // async function formsumbit() {
     //     console.log("Navigating to Edit Profile");
@@ -127,9 +127,9 @@ const Edit = () => {
     const formSubmit = async (e) => {
         // e.preventDefault();
         // console.log("profilePicture: ", profilePicture);
-         const userInformation={
-            firstName,lastName,email,phone,address
-         }
+        const userInformation = {
+            firstName, lastName, email, phone, address
+        }
         //  console.log(userInformation);
 
         try {
@@ -138,9 +138,9 @@ const Edit = () => {
                 userInformation,
                 {
                     useCredentials: true,
-                }                
-            
-               
+                }
+
+
             );
 
             // console.log(response.data);
@@ -158,7 +158,9 @@ const Edit = () => {
         <div className='w-full min-h-screen text-black font-serif'>
             <header className='w-full flex flex-col gap-4 justify-start px-5 py-3 bg-green-900 text-white lg:pl-15'>
 
-                <button onClick={() => (back())} className='hover:text-amber-400 cursor-pointer flex gap-2'>
+                <button onClick={() => {
+                    window.location.href = "/";
+                }} className='hover:text-amber-400 cursor-pointer flex gap-2'>
                     <ArrowLeft className='w-4' />
                     <p>Back to Admin</p>
                 </button>
