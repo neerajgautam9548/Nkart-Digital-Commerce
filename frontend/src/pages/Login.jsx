@@ -98,7 +98,7 @@ const Login = () => {
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
   let [role, setRole] = useState("");
-  const { email } = useParams();
+  // const { email } = useParams();
 
   function updateEmail(e) {
     setEmail(e);
