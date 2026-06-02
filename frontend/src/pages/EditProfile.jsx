@@ -7,7 +7,7 @@ import axios from "axios";
 import { API_URL } from "../constant/url"
 
 
-const Edit = () => {
+const EditProfile = () => {
 
 
     const navigate = useNavigate();
@@ -340,4 +340,4 @@ const Edit = () => {
     )
 }
 
-export default Edit
+export default EditProfile
