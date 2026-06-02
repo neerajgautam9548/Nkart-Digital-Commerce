@@ -22,16 +22,15 @@ const transporter = nodemailer.createTransport({
 const sendOTP = async (email, otp) => {
   try {
     const info = await transporter.sendMail({
-      from: `"Neeraj Bazar Store" <${process.env.SENDER_EMAIL}>`,
+      from: process.env.SENDER_EMAIL,
       to: email,
       subject: "OTP Verification",
       text: `Your OTP is ${otp}`,
       html: `
-        <h2>OTP Verification</h2>
-        <p>Your OTP is:</p>
-        <h1>${otp}</h1>
-        <p>This OTP is valid for 5 minutes.</p>
-      `,
+    <h2>OTP Verification</h2>
+    <h1>${otp}</h1>
+    <p>This OTP is valid for 5 minutes.</p>
+  `
     });
 
     console.log("MAIL SENT:", info.messageId);
@@ -77,8 +76,8 @@ const reqotp = async (req, res) => {
     console.log("OTP sent successfully");
     req.flash("success", "OTP sent successfully");
 
-    return res.status(200).json({...otpCache[email], message: "OTP sent successfully",flashMessage: req.flash("success")});
-   
+    return res.status(200).json({ ...otpCache[email], message: "OTP sent successfully", flashMessage: req.flash("success") });
+
 
   } catch (error) {
     req.flash("error", "Failed to send OTP");
@@ -94,7 +93,7 @@ const reqotp = async (req, res) => {
 // =======================
 // VERIFY OTP
 // =======================
-const  verifyotp = async (req, res) => {
+const verifyotp = async (req, res) => {
   // console.log("chal raha hai")
   const { email, otp } = req.body;
   if (!otpCache[email]) {
