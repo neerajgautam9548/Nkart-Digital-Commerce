@@ -54,9 +54,14 @@ module.exports.RegisterAuth = async (req, res) => {
         // res.send(createdUser);
 
         let token = generateToken(createdUser);
-        res.cookie("token", token);
+        // res.cookie("token", token);
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: true,
+            sameSite: "none"
+        });
 
-        req.flash("success", "Register successfully"); 
+        req.flash("success", "Register successfully");
         return res.status(200).json({
             message: "Register successfully",
             flashMessage: req.flash("success"),
@@ -100,11 +105,11 @@ module.exports.LoginAuth = async (req, res) => {
         }
 
         let token = generateToken(user);
-      res.cookie("token", token, {
-    httpOnly: true,
-    secure: true,
-    sameSite: "none"
-});
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: true,
+            sameSite: "none"
+        });
 
         req.flash("success", "Login successfully");
         return res.status(200).json({
