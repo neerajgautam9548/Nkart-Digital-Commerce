@@ -232,7 +232,7 @@ const Edit = () => {
 
                             <div className='flex w-full gap-2'>
                                 <button className='border-2 w-1/2 hover:bg-green-800 bg-green-900 text-white  px-5  flex justify-center rounded-md py-3 text-center '>Edit Product</button>
-                                <button onClick={back} className='border-2 w-1/2  border-zinc-300 cursor-pointer  text-black font-bold  px-5 flex justify-center rounded-md py-3 text-center '>Cancel</button>
+                                <button onClick={()=>{navigate("/")}} className='border-2 w-1/2  border-zinc-300 cursor-pointer  text-black font-bold  px-5 flex justify-center rounded-md py-3 text-center '>Cancel</button>
                             </div>
 
                         </div>
