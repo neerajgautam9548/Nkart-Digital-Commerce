@@ -324,7 +324,7 @@ const Edit = () => {
 
                                     <input className='border-2 w-full  border-zinc-300 cursor-pointer  text-black px-5 flex justify-center rounded-md py-3 text-center ' type="button"
                                         value="Cancel"
-                                        onClick={back} />
+                                        onClick={() => navigate("/")} />
                                 </label>
                             </div>
 
