@@ -55,7 +55,12 @@ const reqotp = async (req, res) => {
   // res.send(email);
   // console.log(otpCache);
   try {
+    console.log("Sending OTP to:", email);
+    console.log("OTP:", otp);
+
     await sendOTP(email, otp);
+
+    console.log("OTP sent successfully");
     req.flash("success", "OTP sent successfully");
 
     return res.status(200).json({...otpCache[email], message: "OTP sent successfully",flashMessage: req.flash("success")});
@@ -63,6 +68,8 @@ const reqotp = async (req, res) => {
 
   } catch (error) {
     req.flash("error", "Failed to send OTP");
+    // catch (error) {
+    console.log("OTP ERROR:", error);
     return res.status(500).json({
       message: "Failed to send OTP",
       flashMessage: req.flash("error")
