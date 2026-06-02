@@ -98,7 +98,7 @@ const Register = () => {
     try {
 
       let user = { email, otp };
-      const res = await axios.post(`${API_URL}/users/register/verifyOTP`, user);
+      const res = await axios.post(`${API_URL}/users/register/verifyOTP`, user,{withCredentials: true});
       if (res.data.success) {
         setIsOtpVerified(true); // ✅ unlock register
         showFlash(
@@ -156,7 +156,8 @@ const Register = () => {
     try {
       const res = await axios.post(
         `${API_URL}/users/register`,
-        user
+        user,
+        { withCredentials: true }
       );
 
       console.log(res.data);
