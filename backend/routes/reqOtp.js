@@ -25,20 +25,16 @@ console.log("SENDER_EMAIL:", process.env.SENDER_EMAIL);
 
 const sendOTP = async (email, otp) => {
   try {
+    console.log("Before sendMail");
+
     const info = await transporter.sendMail({
-      from: process.env.SENDER_EMAIL,
+      from: `"Neeraj Bazar Store" <${process.env.SENDER_EMAIL}>`,
       to: email,
       subject: "OTP Verification",
       text: `Your OTP is ${otp}`,
-      html: `
-    <h2>OTP Verification</h2>
-    <h1>${otp}</h1>
-    <p>This OTP is valid for 5 minutes.</p>
-  `
     });
 
     console.log("MAIL SENT:", info.messageId);
-    console.log("ACCEPTED:", info.accepted);
     console.log("RESPONSE:", info.response);
 
     return info;
@@ -47,7 +43,6 @@ const sendOTP = async (email, otp) => {
     throw err;
   }
 };
-
 // =======================
 // SEND OTP
 // =======================
