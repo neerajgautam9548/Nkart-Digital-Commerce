@@ -112,9 +112,7 @@ const Edit = () => {
 
     // }
 
-    function back() {
-        navigate('/profile');
-    }
+   
 
     // async function formsumbit() {
     //     console.log("Navigating to Edit Profile");
