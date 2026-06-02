@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useNavigate, Link, useLocation } from "react-router-dom";
+import { useNavigate, Link, useLocation, useParams } from "react-router-dom";
 import { useState } from "react";
 import { API_URL } from "../constant/url";
 import ForgotPassword from './ForgotPassword';
@@ -15,6 +15,7 @@ const Login = () => {
 
   const [success, setSuccess] = useState(null);
   const [error, setError] = useState(null);
+  
 
   const [flash, setFlash] = useState({
     show: false,
@@ -97,6 +98,7 @@ const Login = () => {
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
   let [role, setRole] = useState("");
+  const { email } = useParams();
 
   function updateEmail(e) {
     setEmail(e);

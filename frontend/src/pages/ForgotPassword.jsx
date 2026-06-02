@@ -20,7 +20,7 @@ const ForgotPassword = (user) => {
     let user={email,password};
     console.log(user);
     try{
-      let res=await axios.post(`${API_URL}/users/forgotpassword`,user)
+      let res=await axios.post(`${API_URL}/users/forgotpassword`,user,{withCredentials:true});
       console.log(res.data);
       navigate("/login")
 
