@@ -74,7 +74,7 @@ const Edit = () => {
     // console.log(data);
 
     function back() {
-        navigate("/");
+        navigate("/", { replace: true });
     }
 
     // const formsubmit = async (e) => {
