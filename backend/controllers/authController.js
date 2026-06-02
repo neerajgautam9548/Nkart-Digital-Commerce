@@ -100,11 +100,11 @@ module.exports.LoginAuth = async (req, res) => {
         }
 
         let token = generateToken(user);
-        res.cookie("token", token, {
-            httpOnly: true,
-            secure: false,
-            sameSite: "lax"
-        });
+      res.cookie("token", token, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none"
+});
 
         req.flash("success", "Login successfully");
         return res.status(200).json({

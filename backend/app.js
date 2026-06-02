@@ -62,6 +62,7 @@ app.use(
   // });
   // }
   // admin();
+  app.set("trust proxy", 1);
 
   // app.use("/",indexRouter);
   app.use("/users", UserRouter);
