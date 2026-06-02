@@ -9,21 +9,20 @@ const generateOTP = () => {
   return Math.floor(100000 + Math.random() * 900000).toString();
 };
 
-// transporter
 const transporter = nodemailer.createTransport({
   host: "smtp-relay.brevo.com",
-  port: 2525,
+  port: 587,
   secure: false,
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASSWORD,
+    user: process.env.EMAIL_USER,      // SMTP Login
+    pass: process.env.EMAIL_PASSWORD,  // SMTP Key
   },
 });
 
 const sendOTP = async (email, otp) => {
   try {
     const info = await transporter.sendMail({
-      from: `"Neeraj Bazar Store" <${process.env.EMAIL_USER}>`,
+      from: `"Neeraj Bazar Store" <${process.env.SENDER_EMAIL}>`,
       to: email,
       subject: "OTP Verification",
       text: `Your OTP is ${otp}`,
@@ -45,6 +44,7 @@ const sendOTP = async (email, otp) => {
     throw err;
   }
 };
+
 // =======================
 // SEND OTP
 // =======================
