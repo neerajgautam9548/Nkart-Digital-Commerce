@@ -226,7 +226,7 @@ const Profile = () => {
         </div>
 
         <div className='lg:flex lg:w-1/2 float-right w-[20vw] lg:w-30 h-15 flex items-center '>
-          <button onClick={() => navigate("/")} className='w-full  flex justify-center border-2 px-3 py-2 bg-green text-white border-white hover:border-white  hover:bg-white hover:text-green-900 px-4 text-lg  rounded-md'>Back</button>
+          <button onClick={() => navigate("/", { replace: true })} className='w-full  flex justify-center border-2 px-3 py-2 bg-green text-white border-white hover:border-white  hover:bg-white hover:text-green-900 px-4 text-lg  rounded-md'>Back</button>
 
         </div>
 
