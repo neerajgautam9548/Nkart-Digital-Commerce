@@ -95,7 +95,7 @@ const Profile = () => {
 
 
   function Back() {
-    navigate(-1);
+    navigate("/");
   }
   function EditProfile() {
     //console.log("Navigating to Edit Profile");
