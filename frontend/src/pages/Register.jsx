@@ -123,7 +123,9 @@ const Register = () => {
 
       console.log(email + " " + firstname + " " + lastname + " " + password + " " + API_URL);
       const user = { email };
-      const response = await axios.post(`${API_URL}/users/register/reqOTP`, user);
+      const response = await axios.post(`${API_URL}/users/register/reqOTP`,user,{
+        withCredentials: true
+      });
       // console.log(response.data.flashMessage[0]);
       showFlash(
         response.data.flashMessage[0],
