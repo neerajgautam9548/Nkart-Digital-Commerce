@@ -13,6 +13,7 @@ const upload = multer({
 });
 // const RegisterAuth = require("../controllers/authController");
 router.get("/", (req, res) => {
+    
     res.send("user route is running");
 })
 router.post(
