@@ -227,11 +227,11 @@ const Home = () => {
                         </div>
 
                         {/* Right Image */}
-                        <div className="absolute left-60 hidden lg:flex justify-center items-center w-full h-[550px]">
+                        <div className="overflow-hidden left-60 hidden lg:flex justify-center items-center w-full h-[550px]">
                             <img
-                                src="/nkart1.png" width="800px"
+                                src="/nkart1.png" 
                                 alt="Hero"
-                                className="h-full w-auto object-contain drop-shadow-2xl"
+                                className="h-full w-auto  max-w-6xl object-contain drop-shadow-2xl"
                             />
                         </div>
 
