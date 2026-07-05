@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer, useRef, useState } from 'react'
-import { Mail, Phone, MapPin, LogOut, Edit, Edit2 } from "lucide-react";
+import { Mail, Phone, MapPin, LogOut, Edit, Edit2,ChevronDown } from "lucide-react";
 import { useNavigate, Link } from 'react-router-dom';
+
 import axios from 'axios';
 import { API_URL } from '../constant/url';
 
@@ -130,24 +131,27 @@ const Profile = () => {
   return (
     <div className=' text-zinc-900 text-2xl w-full min-h-screen bg-gray-100'>
       <div className="w-full ">
-        {
-          show && (
-            <div
-              className={`mt-30 
-                        fixed top-5 right-5
-                        transition-all duration-500 ease-in-out
-                        ${animate
-                  ? "translate-x-0 opacity-200"
-                  : "translate-x-full opacity-0"
-                }
-                    `}
-            >
-              <p className="bg-green-500 text-black px-6 py-4 rounded-md shadow-lg ">
-                Welcome to the Home page
-              </p>
-            </div>
-          )
-        }
+         {/* Flash Messages */}
+      {flash.show && (
+        <div
+          className={`fixed top-6 right-6 z-50 transition-all duration-500 ease-in-out ${
+            flash.animate ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
+          }`}
+        >
+          <div
+            className={`px-6 py-4 rounded-lg shadow-lg text-white flex items-center gap-3 ${
+              flash.type === 'success' ? 'bg-emerald-600' : 'bg-red-600'
+            }`}
+          >
+            {flash.type === 'success' ? (
+              <CheckCircle className="w-5 h-5" />
+            ) : (
+              <span>✕</span>
+            )}
+            {flash.message}
+          </div>
+        </div>
+      )}
       </div>
 
       <div className='bg-green-900 p-5 pt-10  flex gap-10 text-white flex-col lg:flex-row w-full'>

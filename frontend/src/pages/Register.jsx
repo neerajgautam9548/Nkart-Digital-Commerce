@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { API_URL } from "../constant/url";
+import { ChevronDown } from "lucide-react";
+
 import axios from "axios";
 
 const Register = () => {

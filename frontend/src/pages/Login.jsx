@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useNavigate, Link, useLocation, useParams } from "react-router-dom";
 import { useState } from "react";
 import { API_URL } from "../constant/url";
+import { ChevronDown } from "lucide-react";
 import ForgotPassword from './ForgotPassword';
 import axios from "axios";
 // import 
@@ -188,32 +189,27 @@ const Login = () => {
 
       <div>
 
-        {
-          flash.show && (
-            <div
-              className={`
-            fixed top-5 right-5 z-50
-            transition-all duration-500 ease-in-out
-            ${flash.animate
-                  ? "translate-x-0 opacity-100"
-                  : "translate-x-full opacity-0"
-                }
-         `}
-            >
-              <p
-                className={`
-               px-6 py-4 rounded-md shadow-lg text-white
-               ${flash.type === "success"
-                    ? "bg-green-500"
-                    : "bg-red-500"
-                  }
-            `}
-              >
-                {flash.message}
-              </p>
-            </div>
-          )
-        }
+         {/* Flash Messages */}
+      {flash.show && (
+        <div
+          className={`fixed top-6 right-6 z-50 transition-all duration-500 ease-in-out ${
+            flash.animate ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
+          }`}
+        >
+          <div
+            className={`px-6 py-4 rounded-lg shadow-lg text-white flex items-center gap-3 ${
+              flash.type === 'success' ? 'bg-emerald-600' : 'bg-red-600'
+            }`}
+          >
+            {flash.type === 'success' ? (
+              <CheckCircle className="w-5 h-5" />
+            ) : (
+              <span>✕</span>
+            )}
+            {flash.message}
+          </div>
+        </div>
+      )}
 
       </div>
       <div className='lg:w-1/2 lg:px-30 w-full min-h-screen bg-gradient-to-br from-[#1a472a] to-[#2d5a3d] px-10 py-30 flex flex-col justify-center items-start gap-5'>

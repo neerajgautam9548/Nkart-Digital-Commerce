@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Stars from "../assets/icons/stars.png";
 import { API_URL } from '../constant/url';
 import axios from "axios";
-import { Heart, Star } from "lucide-react"
+import { Heart, Star,CheckCircle  } from "lucide-react"
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 
 
@@ -145,32 +145,27 @@ const ProductDetails = () => {
 
     <div className='bg-white text-zinc-900 w-full min-h-screen mt-30'>
       <div className="w-full ">
-        {
-          flash.show && (
-            <div
-              className={`
-            mt-30 fixed top-5 right-5 z-50
-            transition-all duration-500 ease-in-out
-            ${flash.animate
-                  ? "translate-x-0 opacity-100"
-                  : "translate-x-full opacity-0"
-                }
-         `}
-            >
-              <p
-                className={`
-               px-6 py-4 rounded-md shadow-lg text-white
-               ${flash.type === "success"
-                    ? "bg-green-500"
-                    : "bg-red-500"
-                  }
-            `}
-              >
-                {flash.message}
-              </p>
-            </div>
-          )
-        }
+        {/* Flash Messages */}
+      {flash.show && (
+        <div
+          className={`fixed top-6 right-6 z-50 transition-all duration-500 ease-in-out ${
+            flash.animate ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
+          }`}
+        >
+          <div
+            className={`px-6 py-4 rounded-lg shadow-lg text-white flex items-center gap-3 ${
+              flash.type === 'success' ? 'bg-emerald-600' : 'bg-red-600'
+            }`}
+          >
+            {flash.type === 'success' ? (
+              <CheckCircle className="w-5 h-5" />
+            ) : (
+              <span>✕</span>
+            )}
+            {flash.message}
+          </div>
+        </div>
+      )}
       </div>
 
       <div className='px-5 my-10'>

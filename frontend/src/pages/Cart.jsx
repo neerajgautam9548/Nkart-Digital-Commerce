@@ -3,6 +3,7 @@ import Stars from "../assets/icons/stars.png";
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import { API_URL } from '../constant/url';
 import axios from "axios";
+import { ChevronUp, ChevronDown, Trash2, Truck, RotateCcw, Lock, CheckCircle } from 'lucide-react'
 // import file from "../../public/inde"
 
 const Cart = () => {
@@ -23,6 +24,7 @@ const Cart = () => {
     message: "",
     type: ""
   });
+
 
   useEffect(() => {
 
@@ -139,14 +141,14 @@ const Cart = () => {
         "success"
       );
 
-    } catch(err) {
-        navigate("/login", {
-                state: {
-                    flashMessage: "Please login to access the home page",
-                    type: "error",
-                },
-            });
-      };
+    } catch (err) {
+      navigate("/login", {
+        state: {
+          flashMessage: "Please login to access the home page",
+          type: "error",
+        },
+      });
+    };
   }
 
 
@@ -341,190 +343,240 @@ const Cart = () => {
 
 
   return (
-    <div className=' w-full min-h-screen mt-36 text-black lg:px-15 font-serif'>
-      <div className="w-full ">
-        {
-          flash.show && (
-            <div
-              className={`mt-30 
-            fixed top-5 right-5 z-50
-            transition-all duration-500 ease-in-out
-            ${flash.animate
-                  ? "translate-x-0 opacity-100"
-                  : "translate-x-full opacity-0"
-                }
-         `}
-            >
-              <p
-                className={`
-               px-6 py-4 rounded-md shadow-lg text-white
-               ${flash.type === "success"
-                    ? "bg-green-500"
-                    : "bg-red-500"
-                  }
-            `}
-              >
-                {flash.message}
-              </p>
-            </div>
-          )
-        }
-      </div>
-      <h1 className=' m-5 px-5 text-zinc-500 text-4xl font-bold'>Cart</h1>
-
-      {/* {product ? ( */}
-      {
-  userProducts.length === 0 ? (
-    <p>No product found</p>
-  ) : (
-
-      userProducts.map((p) => (
-        <div key={p._id}>
-
-          <div className='lg:flex font-[Poppins]'>
-
-            <div className='flex flex-col justify-center items-center ml-5 gap-2'>
-              <img
-                className='rounded-md 
-    w-[400px] h-[250px] 
-    lg:w-[800px] lg:h-[590px] 
-    object-cover'
-                src={p.images[0]}
-                alt={p.name}
-              />
-            </div>
-
-
-            <div className='pl-10 pt-5  lg:px-20  flex flex-col font-serif justify-start items-center'>
-              <p className='w-full py-2 flex justify-around px-4'>
-                <span className='w-full flex justify-start font-bold text-3xl'>{p.name}</span>
-
-              </p>
-              <div className='flex w-full mb-2'>
-
-                <p className='w-full flex justify-start w-full ml-4 text-zinc-500'> {p.category}</p>
-                <p className='justify-end font-bold pr-10 text-2xl font-[Poppins]'>₹{p.price}</p>
-              </div>
-              {/* <input className='flex justify-start w-full ml-8 text-2xl font-bold font-sans py-3' readOnly /> */}
-
-
-              {/* <span name="amount" className='w-full flex justify-start ml-7 text-2xl mt-4 font-bold'>{product[0].price}</span> */}
-              <span className='lg:ml-4 px-5 lg:px-0  text-zinc-400'>{p.description}</span>
-              <p className='w-full relative py-2 flex justify-start'>
-                <img width='100px' height='1px' className='absolute bottom-[-70px] ml-4 flex justify-start' src={Stars} alt="" />
-              </p>
-              <p className='lg:mr-80 mr-40 mt-1 pl-20 lg:pl-30'>(121)</p>
-              <div className="w-full flex justify-start items-center mt-8">
-
-                {/* Title */}
-                <h1 className="ml-4 text-xl font-bold">Count</h1>
-
-                {/* Counter Box */}
-                <div className="w-full flex justify-end items-center gap-6 px-10 text-xl font-[Poppins]">
-                  <div className='lg:gap-10 flex justify-center items-center gap-5 px-15 lg:px-20 rounded-3xl hover:bg-green-800 hover:text-white text-2xl border-2 w-1/3'>
-
-                    {/* Decrease */}
-                    <button onClick={() => { decrease() }} className="cursor-pointer px-3 leading-4  ">
-                      -
-                    </button>
-
-                    {/* Value */}
-                    <p className='text-sm'>{count}</p>
-
-                    {/* Increase */}
-                    <button
-                      onClick={() => { increase() }}
-                      className="cursor-pointer"
-                    >
-                      +
-                    </button>
-                  </div>
-
-                </div>
-
-              </div>
-              <div className='flex w-full relative'>
-
-                <button onClick={() => payNow()} className='relative bottom-4 mt-10 ml-5 hover:bg-green-900 hover:text-white flex justify-center rounded-3xl border-2 px-5 py-2 w-1/2' >Add To Cart</button>
-                <button onClick={() => removeNow(p._id)} className='relative bottom-4 mt-10 ml-5 hover:bg-red-800 hover:text-white flex justify-center rounded-3xl border-2 px-5 py-2 w-1/2' >Remove From Cart</button>
-              </div>
-
-
-              <div className='lg:w-full lg:px-5 mx-5 mt-10 lg:mt-10 flex lg:flex-col gap-5'>
-                <div className='flex flex-col '>
-                  <p>Free Delivery</p>
-                  <p className='underline'>Enter your Postal code for Delivery Availability</p>
-                </div>
-                <div>
-                  <p>Return Delivery</p>
-                  <p>Free 30days Delivery Returns.</p>
-                  <span className='underline'>Details</span>
-                </div>
-              </div>
-
-            </div>
-
+    // <div className=' w-full min-h-screen mt-36 text-black lg:px-15 font-serif'>
+     <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white mt-20">
+      {/* Flash Messages */}
+      {flash.show && (
+        <div
+          className={`fixed top-6 right-6 z-50 transition-all duration-500 ease-in-out ${
+            flash.animate ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
+          }`}
+        >
+          <div
+            className={`px-6 py-4 rounded-lg shadow-lg text-white flex items-center gap-3 ${
+              flash.type === 'success' ? 'bg-emerald-600' : 'bg-red-600'
+            }`}
+          >
+            {flash.type === 'success' ? (
+              <CheckCircle className="w-5 h-5" />
+            ) : (
+              <span>✕</span>
+            )}
+            {flash.message}
           </div>
-          {/* <div className='m-6 w-full font-serif'>
-            <h1 className='text-2xl font-bold'>JBL Tune 600BTNC Full Specification</h1>
-            <div className='w-full flex flex-col lg:flex-row gap-3 px-3 lg:gap-10 mt-5'>
-              <div className='w-full flex flex-col gap-3'>
-
-
-                <p>
-                  <span >Brand</span>
-                  <span className='font-bold float-end'>Apple</span>
-                </p>< hr />
-                <p>
-                  <span>Model</span>
-                  <span className='font-bold float-end'>Apple</span>
-                </p><hr />
-                <p>
-                  <span>Connectivity</span>
-                  <span className='font-bold float-end'>Apple</span>
-                </p><hr />
-              </div>
-              <div className='w-full flex flex-col gap-3'>
-
-                <p>
-
-                  <span>Battery Life</span>
-                  <span className='font-bold float-end'>Apple</span>
-                </p><hr />
-                <p>
-                  <span>Noise Cancelling</span>
-                  <span className='font-bold float-end'>Apple</span>
-                </p><hr />
-                <p>
-                  <span>Weight</span>
-                  <span className='font-bold float-end'>Apple</span>
-                </p><hr />
-
-              </div>
-
-
-            </div>
-
-          </div> */}
-
+        </div>
+      )}
+      <div className="max-w-6xl mx-auto px-6 lg:px-8 py-16">
+        {/* Header */}
+        <div className="mb-12">
+          <p className="text-sm font-medium text-slate-500 mb-3 uppercase tracking-wide">
+            Shopping Cart
+          </p>
+          <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-2">
+            Your Cart
+          </h1>
+          <p className="text-slate-600">
+            {userProducts.length} {userProducts.length === 1 ? 'item' : 'items'} in your cart
+          </p>
         </div>
 
+        {/* Cart Items */}
+        {userProducts.length === 0 ? (
+          <div className="text-center py-16">
+            <p className="text-slate-500 text-lg">Your cart is empty</p>
+          </div>
+        ) : (
+          <div className="space-y-6 mb-12">
+            {userProducts.map((product) => (
+              <div
+                key={product._id}
+                className="bg-white border border-slate-200 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300"
+              >
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-center">
+                  {/* Product Image */}
+                  <div className="lg:col-span-1 flex justify-center">
+                    <div className="bg-slate-100 rounded-xl p-6 w-full max-w-xs">
+                      <img
+                        src={product.images[0]}
+                        alt={product.name}
+                        className="w-full h-48 object-contain hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  </div>
 
+                  {/* Product Details */}
+                  <div className="lg:col-span-2 space-y-4">
+                    <div>
+                      <span className="inline-block bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide mb-3">
+                        {product.category}
+                      </span>
+                      <h2 className="text-2xl font-bold text-slate-900">
+                        {product.name}
+                      </h2>
+                    </div>
 
-      ))
-      
-  )
-}
+                    <p className="text-slate-600 leading-relaxed">
+                      {product.description}
+                    </p>
 
+                    <div className="flex items-baseline gap-3 pt-2">
+                      <span className="text-3xl font-bold text-slate-900">
+                        ₹{product.price.toLocaleString()}
+                      </span>
+                      <span className="text-lg line-through text-slate-400">
+                        ₹{(product.price * 1.67).toLocaleString()}
+                      </span>
+                      <span className="text-sm font-semibold text-emerald-600 bg-emerald-50 px-2 py-1 rounded">
+                        40% OFF
+                      </span>
+                    </div>
+                  </div>
 
+                  {/* Actions */}
+                  <div className="lg:col-span-1 space-y-4">
+                    {/* Quantity Selector */}
+                    <div className="bg-slate-50 rounded-xl p-4 inline-block w-full lg:w-auto">
+                      <label className="text-sm font-semibold text-slate-700 block mb-3">
+                        Quantity
+                      </label>
+                      <div className="flex items-center border border-slate-300 rounded-lg bg-white">
+                        <button
+                          onClick={() => decrease(product._id)}
+                          className="p-2 hover:bg-slate-100 transition-colors text-slate-600"
+                          aria-label="Decrease quantity"
+                        >
+                          <ChevronDown className="w-5 h-5" />
+                        </button>
+                        <span className="flex-1 text-center font-semibold py-2">
+                          {/* {getQuantity(product._id)} */}
+                        </span>
+                        <button
+                          onClick={() => increase(product._id)}
+                          className="p-2 hover:bg-slate-100 transition-colors text-slate-600"
+                          aria-label="Increase quantity"
+                        >
+                          <ChevronUp className="w-5 h-5" />
+                        </button>
+                      </div>
+                    </div>
 
+                    {/* Remove Button */}
+                    <button
+                      onClick={() => removeNow(product._id)}
+                      className="w-full flex items-center justify-center gap-2 px-4 py-3 border-2 border-red-200 text-red-600 rounded-lg font-semibold hover:bg-red-50 transition-colors duration-300"
+                    >
+                      <Trash2 className="w-5 h-5" />
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
 
+        {userProducts.length > 0 && (
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Benefits */}
+            <div className="lg:col-span-2 space-y-4">
+              <h3 className="text-sm font-semibold text-slate-900 uppercase tracking-wide mb-4">
+                Shipping & Returns
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="bg-blue-50 border border-blue-200 p-5 rounded-xl">
+                  <div className="flex items-start gap-3">
+                    <Truck className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
+                    <div>
+                      <h4 className="font-semibold text-slate-900">Free Delivery</h4>
+                      <p className="text-sm text-slate-600 mt-1">
+                        Free shipping across India
+                      </p>
+                    </div>
+                  </div>
+                </div>
 
+                <div className="bg-purple-50 border border-purple-200 p-5 rounded-xl">
+                  <div className="flex items-start gap-3">
+                    <RotateCcw className="w-5 h-5 text-purple-600 flex-shrink-0 mt-1" />
+                    <div>
+                      <h4 className="font-semibold text-slate-900">Easy Returns</h4>
+                      <p className="text-sm text-slate-600 mt-1">
+                        30-day return policy
+                      </p>
+                    </div>
+                  </div>
+                </div>
 
+                <div className="bg-amber-50 border border-amber-200 p-5 rounded-xl">
+                  <div className="flex items-start gap-3">
+                    <Lock className="w-5 h-5 text-amber-600 flex-shrink-0 mt-1" />
+                    <div>
+                      <h4 className="font-semibold text-slate-900">Secure Payment</h4>
+                      <p className="text-sm text-slate-600 mt-1">
+                        Encrypted transactions
+                      </p>
+                    </div>
+                  </div>
+                </div>
 
+                <div className="bg-green-50 border border-green-200 p-5 rounded-xl">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                    <div>
+                      <h4 className="font-semibold text-slate-900">Authentic Products</h4>
+                      <p className="text-sm text-slate-600 mt-1">
+                        100% genuine guarantee
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
+            {/* Order Summary */}
+            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8 h-fit sticky top-8">
+              <h3 className="text-lg font-bold text-slate-900 mb-6">
+                Order Summary
+              </h3>
 
-    </div>
+              <div className="space-y-4 mb-6">
+                <div className="flex justify-between text-slate-600">
+                  <span>Subtotal</span>
+                  {/* <span className="font-semibold">₹{calculateTotal().toLocaleString()}</span> */}
+                </div>
+                <div className="flex justify-between text-slate-600">
+                  <span>Shipping</span>
+                  <span className="font-semibold text-green-600">Free</span>
+                </div>
+                <div className="flex justify-between text-slate-600">
+                  <span>Tax (estimated)</span>
+                  <span className="font-semibold">
+                    {/* ₹{Math.round(calculateTotal() * 0.18).toLocaleString()} */}
+                  </span>
+                </div>
+              </div>
+
+              <div className="border-t border-slate-300 pt-6 mb-6">
+                <div className="flex justify-between">
+                  <span className="text-lg font-bold text-slate-900">Total</span>
+                  <span className="text-2xl font-bold text-slate-900">
+                    {/* ₹{Math.round(calculateTotal() * 1.18).toLocaleString()} */}
+                  </span>
+                </div>
+              </div>
+
+              <button className="w-full bg-emerald-600 text-white font-semibold py-4 rounded-lg hover:bg-emerald-700 transition-colors duration-300 shadow-lg hover:shadow-xl">
+                Proceed to Checkout
+              </button>
+
+              <button className="w-full mt-3 border-2 border-slate-300 text-slate-700 font-semibold py-3 rounded-lg hover:bg-slate-100 transition-colors duration-300">
+                Continue Shopping
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </main>
   )
 }
 

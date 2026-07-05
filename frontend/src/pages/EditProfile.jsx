@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useRef } from 'react'
-import { Upload, Plus, Trash2, ArrowLeft } from 'lucide-react'
+import { Upload, Plus, Trash2, ArrowLeft,ChevronDown } from 'lucide-react'
+
 import { useNavigate, useParams, useLocation } from 'react-router-dom'
 import ProductDetails from './ProductDetails';
 import axios from "axios";

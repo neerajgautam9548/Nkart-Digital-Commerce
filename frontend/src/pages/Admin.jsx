@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { Plus, Edit2, Trash2, Search, Filter, ArrowLeft } from 'lucide-react'
+import { Plus, Edit2, Trash2, Search, Filter, ArrowLeft,CheckCircle  } from 'lucide-react'
 import { API_URL } from "../constant/url";
 import axios from "axios";
 
@@ -190,32 +190,27 @@ const Admin = () => {
 
     return (
         <div className='min-h-screen w-full text-black font-serif'>
-            {
-                flash.show && (
-                    <div
-                        className={`
-            mt-50 fixed top-5 right-5 z-50
-            transition-all duration-500 ease-in-out
-            ${flash.animate
-                                ? "translate-x-0 opacity-100"
-                                : "translate-x-full opacity-0"
-                            }
-         `}
-                    >
-                        <p
-                            className={` 
-               px-6 py-4 rounded-md shadow-lg text-white
-               ${flash.type === "success"
-                                    ? "bg-green-500"
-                                    : "bg-red-500"
-                                }
-            `}
-                        >
-                            {flash.message}
-                        </p>
-                    </div>
-                )
-            }
+            {/* Flash Messages */}
+      {flash.show && (
+        <div
+          className={`fixed top-6 right-6 z-50 transition-all duration-500 ease-in-out ${
+            flash.animate ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
+          }`}
+        >
+          <div
+            className={`px-6 py-4 rounded-lg shadow-lg text-white flex items-center gap-3 ${
+              flash.type === 'success' ? 'bg-emerald-600' : 'bg-red-600'
+            }`}
+          >
+            {flash.type === 'success' ? (
+              <CheckCircle className="w-5 h-5" />
+            ) : (
+              <span>✕</span>
+            )}
+            {flash.message}
+          </div>
+        </div>
+      )}
             <div className='w-full bg-green-900 text-white fixed top-0 py-5 px-5 z-10 border-b overflow- border-zinc-300'>
                 <button onClick={() => (back())} className='hover:text-amber-400  cursor-pointer flex gap-2'>
                     <ArrowLeft className='w-4' />
