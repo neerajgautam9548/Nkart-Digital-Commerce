@@ -18,9 +18,9 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASSWORD,  // SMTP Key
   },
 });
-console.log("EMAIL_USER:", process.env.EMAIL_USER);
-console.log("EMAIL_PASSWORD:", process.env.EMAIL_PASSWORD);
-console.log("SENDER_EMAIL:", process.env.SENDER_EMAIL);
+// console.log("EMAIL_USER:", process.env.EMAIL_USER);
+// console.log("EMAIL_PASSWORD:", process.env.EMAIL_PASSWORD);
+// console.log("SENDER_EMAIL:", process.env.SENDER_EMAIL);
 
 const SibApiV3Sdk = require('sib-api-v3-sdk');
 

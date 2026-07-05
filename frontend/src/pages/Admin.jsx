@@ -117,9 +117,9 @@ const Admin = () => {
 
 
     const Edit = (id) => {
-        const res=axios.get(`${API_URL}/products/${id}`, { withCredentials: true })
-           
-            .then((res) => {        
+        const res = axios.get(`${API_URL}/products/${id}`, { withCredentials: true })
+
+            .then((res) => {
                 // console.log(res.data.data);
                 navigate(`/Edit/${id}`, {
                     state: {

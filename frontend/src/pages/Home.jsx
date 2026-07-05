@@ -4,7 +4,10 @@ import Location from "../assets/icons/location.png"
 import Phone from "../assets/icons/telephone.png"
 import Person from "../assets/icons/person.png"
 import Cart from "../assets/icons/cart.png"
-import HomePic from "../assets/images/homePicture.png"
+// import HomePic from "../assets/images/homePicture.png"
+// import HomePic from "../../public/nkart1.png"
+// import HomePic from "../public/nkart1.png";
+// import HomePic from "./public/nkart1.png";
 import Stars from "../assets/icons/stars.png"
 import { API_URL } from '../constant/url';
 import axios from 'axios';
@@ -15,88 +18,95 @@ const Home = () => {
     const [show, setShow] = useState(false);
     const [animate, setAnimate] = useState(false);
     const location = useLocation();
-    
+
 
     const [flash, setFlash] = useState({
         show: false,
         message: "",
         type: ""
-      });
+    });
 
 
-   useEffect(() => {
+    useEffect(() => {
 
-      if(location.state?.flashMessage){
+        if (location.state?.flashMessage) {
 
-         showFlash(
-            location.state.flashMessage,
-            location.state.type
-         );
+            showFlash(
+                location.state.flashMessage,
+                location.state.type
+            );
 
-      }
+        }
 
-   }, [location]);
+    }, [location]);
 
     const showFlash = (message, type) => {
 
-    setFlash({
-      show: true,
-      message,
-      type
-    });
+        setFlash({
+            show: true,
+            message,
+            type
+        });
 
-    // slide in
-    setTimeout(() => {
-      setFlash(prev => ({
-        ...prev,
-        animate: true
-      }));
-    }, 100);
+        // slide in
+        setTimeout(() => {
+            setFlash(prev => ({
+                ...prev,
+                animate: true
+            }));
+        }, 100);
 
-    // slide out
-    setTimeout(() => {
-      setFlash(prev => ({
-        ...prev,
-        animate: false
-      }));
-    }, 2000);
+        // slide out
+        setTimeout(() => {
+            setFlash(prev => ({
+                ...prev,
+                animate: false
+            }));
+        }, 2000);
 
-    // remove completely
-    setTimeout(() => {
-      setFlash({
-        show: false,
-        message: "",
-        type: "",
-        animate: false
-      });
-    }, 2600);
-  };
+        // remove completely
+        setTimeout(() => {
+            setFlash({
+                show: false,
+                message: "",
+                type: "",
+                animate: false
+            });
+        }, 2600);
+    };
 
 
     const navigate = useNavigate();
 
-   useEffect(() => {
-    const fetchData = async () => {
-        try {
-            const response = await axios.get(`${API_URL}/`, {
-                withCredentials: true,
-            });
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`${API_URL}/`, {
+                    withCredentials: true,
+                });
 
-            // console.log("Flash Message from backend:", response.data.flashMessage);
-            setFlash(response.data.flashMessage);
+                // console.log("Flash Message from backend:", response.data.flashMessage);
+                setFlash(response.data.flashMessage);
 
-        } catch (error) {
-            navigate("/login", {
-                state: {
-                    flashMessage: "Please login to access the home page",
-                    type: "error",
-                },
-            });
-        }
-    };
+            } catch (error) {
+                navigate("/login", {
+                    state: {
+                        flashMessage: "Please login to access the home page",
+                        type: "error",
+                    },
+                });
+            }
+        };
 
-    fetchData();
-}, []);
+        fetchData();
+    }, []);
+
+    async function shopNow(e) {
+        // e.preventDefault();
+        console.log("Shop Now button clicked");
+        navigate("/productDetails");
+
+    }
 
 
     // console.log(flash);
@@ -138,15 +148,95 @@ const Home = () => {
             </div>
 
 
-            <div className='bg-gradient-to-r from-[#c4e3d4] to-[#b8a88a] flex justify-around items-center pt-36'>
+            <div className="lg:mt-31 mt-30 pt-5 md:mt-30  bg-gradient-to-r from-[#c4e3d4] via-[#c9d8c7] to-[#b8a88a] min-h-[90vh] flex items-center">
+                <div className="max-w-7xl mx-auto w-full px-6 lg:px-14">
 
-                <div className=" lg:w-1/3 text-zinc-900 flex flex-col py-[10%] ml-[10%] gap-6 justify-start">
-                    <h1 className='text-3xl font-bold'>Shopping and Department Store.</h1>
-                    <p>Shopping is a bit of a relaxing hobby for me, which is sometimes troubling for the bank balance.</p>
-                    <button className='flex justify-center px-2 py-2 rounded-3xl bg-[#1a472a] text-white w-1/2 '>Learn More</button>
-                </div>
-                <div className='hidden lg:flex w-[50%] px-10 py-20'>
-                    <img src={HomePic} alt="" />
+                    <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
+
+                        {/* Left Content */}
+                        <div className="space-y-8">
+
+                            <span className="inline-block bg-green-100 text-[#1a472a] px-5 py-2 rounded-full text-sm font-semibold tracking-wide">
+                                WELCOME TO NKARTINDIA
+                            </span>
+
+                            <h1 className="text-5xl lg:text-6xl font-bold leading-tight text-zinc-900">
+                                Shopping and <br />
+                                <span className="text-[#1a472a]">
+                                    Department Store.
+                                </span>
+                            </h1>
+
+                            <p className="text-lg text-zinc-700 leading-8 max-w-xl">
+                                Shopping is a bit of a relaxing hobby for me,
+                                which is sometimes troubling for the bank
+                                balance.
+                            </p>
+
+                            <div onClick={(e)=>{shopNow(e)}} className="flex gap-5">
+                                <button onClick={(e)=>{shopNow(e)}} className="bg-[#1a472a] hover:bg-[#153820] duration-300 text-white px-8 py-4 rounded-full font-semibold shadow-lg">
+                                    Learn More →
+                                </button>
+
+                                <button onClick={(e)=>{shopNow(e)}} className="border-2 border-[#1a472a] text-[#1a472a] hover:bg-[#1a472a] hover:text-white duration-300 px-8 py-4 rounded-full font-semibold">
+                                    Shop Now
+                                </button>
+                            </div>
+
+                            {/* Features */}
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8">
+
+                                <div>
+                                    <h3 className="font-semibold text-[#1a472a]">
+                                        Secure Payment
+                                    </h3>
+                                    <p className="text-sm text-zinc-600">
+                                        100% Secure
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h3 className="font-semibold text-[#1a472a]">
+                                        Fast Delivery
+                                    </h3>
+                                    <p className="text-sm text-zinc-600">
+                                        Quick & Reliable
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h3 className="font-semibold text-[#1a472a]">
+                                        Best Quality
+                                    </h3>
+                                    <p className="text-sm text-zinc-600">
+                                        Top Rated Products
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h3 className="font-semibold text-[#1a472a]">
+                                        Easy Returns
+                                    </h3>
+                                    <p className="text-sm text-zinc-600">
+                                        Hassle Free
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        {/* Right Image */}
+                        <div className="absolute left-60 hidden lg:flex justify-center items-center w-full h-[550px]">
+                            <img
+                                src="/nkart1.png" width="800px"
+                                alt="Hero"
+                                className="h-full w-auto object-contain drop-shadow-2xl"
+                            />
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
 

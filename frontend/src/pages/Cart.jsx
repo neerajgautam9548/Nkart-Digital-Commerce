@@ -465,7 +465,7 @@ const Cart = () => {
             </div>
 
           </div>
-          <div className='m-6 w-full font-serif'>
+          {/* <div className='m-6 w-full font-serif'>
             <h1 className='text-2xl font-bold'>JBL Tune 600BTNC Full Specification</h1>
             <div className='w-full flex flex-col lg:flex-row gap-3 px-3 lg:gap-10 mt-5'>
               <div className='w-full flex flex-col gap-3'>
@@ -505,7 +505,7 @@ const Cart = () => {
 
             </div>
 
-          </div>
+          </div> */}
 
         </div>
 
