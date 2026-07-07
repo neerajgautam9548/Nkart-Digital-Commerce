@@ -11,8 +11,9 @@ import Cart from "../assets/icons/cart.png"
 import Stars from "../assets/icons/stars.png"
 import { API_URL } from '../constant/url';
 import axios from 'axios';
-import { Navigate, useLocation, useNavigate,CheckCircle  } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate  } from 'react-router-dom';
 import ProductDetails from './ProductDetails';
+import { CheckCircle } from 'lucide-react';
 
 const Home = () => {
     const [show, setShow] = useState(false);

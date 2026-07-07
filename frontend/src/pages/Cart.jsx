@@ -565,7 +565,7 @@ const Cart = () => {
                 </div>
               </div>
 
-              <button className="w-full bg-emerald-600 text-white font-semibold py-4 rounded-lg hover:bg-emerald-700 transition-colors duration-300 shadow-lg hover:shadow-xl">
+              <button onClick={()=>payNow()} className="w-full bg-emerald-600 text-white font-semibold py-4 rounded-lg hover:bg-emerald-700 transition-colors duration-300 shadow-lg hover:shadow-xl">
                 Proceed to Checkout
               </button>
 

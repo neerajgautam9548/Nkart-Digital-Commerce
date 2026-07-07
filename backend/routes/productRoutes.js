@@ -89,18 +89,47 @@ router.delete("/:id", async (req, res) => {
 
 router.post("/addCart", async (req, res) => {
     try {
-        const productId = req.body.productId;
+        const { productId } = req.body;
+
+        // Check product exists
         const product = await productModel.findById(productId);
+        if (!product) {
+            return res.status(404).json({
+                message: "Product not found"
+            });
+        }
+
+        // Find user
         const user = await userModel.findById(req.user.id);
-        user.products.push(product._id);
+
+        // Check if product already exists in cart
+        if (user.products.includes(productId)) {
+            return res.status(409).json({
+                message: "Product already exists in cart"
+            });
+        }
+
+        // Add product
+        user.products.push(productId);
         await user.save();
+
         req.flash("success", "Product added to cart successfully");
-        res.status(200).json({ message: "product add successfully to the cart", flashMessage: req.flash("success") })
+
+        res.status(200).json({
+            message: "Product added successfully to the cart",
+            flashMessage: req.flash("success")
+        });
+
     } catch (err) {
         req.flash("error", "Failed to add product to cart");
-        res.status(500).json({ message: "internal server error", data: err.message, flashMessage: req.flash("error") });
+
+        res.status(500).json({
+            message: "Internal server error",
+            data: err.message,
+            flashMessage: req.flash("error")
+        });
     }
-})
+});
 
 router.get("/cart", async (req, res) => {
     try {

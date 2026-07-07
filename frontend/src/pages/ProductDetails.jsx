@@ -104,35 +104,33 @@ const ProductDetails = () => {
   //     ? products
   //     : products.filter((p) => p.category === selectedCategory);
   async function Cart(id) {
-    // console.log(id);
-    try {
-
-      await axios.post(`${API_URL}/products/addCart`, {
-
+  try {
+    const res = await axios.post(
+      `${API_URL}/products/addCart`,
+      {
         productId: id,
-      }, {
+      },
+      {
         withCredentials: true,
-      })
-        .then((res) => {
-          showFlash(
-            res.data.flashMessage[0],
-            "success"
-          )
-          console.log(res.data);
-        })
-        .catch((err) => {
-          showFlash(
-            err.response.data.flashMessage[0],
-            "error"
-          )
-          console.log("add cart show error" + err)
-        })
-      // navigate(`/cart/${id}`,{state:{data:id}});
-    }
-    catch (err) {
-      console.log("add cart show error" + err);
-    }
+      }
+    );
+
+    showFlash(
+      res.data.flashMessage?.[0] || res.data.message,
+      "success"
+    );
+
+  } catch (err) {
+    showFlash(
+      err.response?.data?.flashMessage?.[0] ||
+      err.response?.data?.message ||
+      "Something went wrong",
+      "error"
+    );
+
+    console.log(err.response?.data);
   }
+}
 
   const filteredProducts = products.filter((product) =>
   product.name

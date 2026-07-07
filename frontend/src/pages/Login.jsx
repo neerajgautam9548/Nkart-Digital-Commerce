@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useNavigate, Link, useLocation, useParams } from "react-router-dom";
 import { useState } from "react";
 import { API_URL } from "../constant/url";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown,CheckCircle } from "lucide-react";
 import ForgotPassword from './ForgotPassword';
 import axios from "axios";
 // import 
