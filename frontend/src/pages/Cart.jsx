@@ -441,17 +441,21 @@ const Cart = () => {
                       </label>
                       <div className="flex items-center border border-slate-300 rounded-lg bg-white">
                         <button
-                          onClick={() => decrease(product._id)}
+                          // onClick={() => decrease(product._id)}
+                          // onClick={() => setCount((prev) => Math.max(1, prev - 1))}
                           className="p-2 hover:bg-slate-100 transition-colors text-slate-600"
                           aria-label="Decrease quantity"
                         >
                           <ChevronDown className="w-5 h-5" />
                         </button>
                         <span className="flex-1 text-center font-semibold py-2">
-                          {/* {getQuantity(product._id)} */}
+                       
                         </span>
+                      
+                          {/* {getQuantity(product._id)} */} 
                         <button
-                          onClick={() => increase(product._id)}
+                          // onClick={() => increase(product._id)}
+                          // onClick={() => setCount((prev) => prev + 1)}
                           className="p-2 hover:bg-slate-100 transition-colors text-slate-600"
                           aria-label="Increase quantity"
                         >
