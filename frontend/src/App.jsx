@@ -1,5 +1,5 @@
 import React from 'react'
-import {Routes,Route} from 'react-router-dom'
+import {Routes,Route } from 'react-router-dom'
 import Home  from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
@@ -14,12 +14,14 @@ import Admin from "./pages/Admin";
 import CreateProduct from "./pages/CreateProduct";
 import Edit from "./pages/Edit";
 import EditProfile from "./pages/EditProfile";
+import ChatBot from './components/ChatBot';
 
 const App = () => {
   return (
     <div className='bg-white-700 w-full min-h-screen text-white font-sans'>
   
       <Routes>
+
         <Route path='/' element={<Mainlayout>{<Home/>}</Mainlayout>} ></Route>
         <Route path='/cart' element={<Mainlayout>{<Cart/>}</Mainlayout>}></Route>
         <Route path='/cart/:id' element={<Mainlayout>{<Cart/>}</Mainlayout>}></Route>
@@ -43,8 +45,7 @@ const App = () => {
         <Route path='/profile/EditProfile' element={<EditProfile/>}></Route>
 
       </Routes> 
-
-     
+      <ChatBot />
     </div>
   )
 }

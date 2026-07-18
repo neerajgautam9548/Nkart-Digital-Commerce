@@ -87,6 +87,36 @@ router.delete("/:id", async (req, res) => {
     res.status(200).json({ message: "product removed from the cart", flashMessage: req.flash("success") });
 });
 
+router.put("/updateCart", async (req, res) => {
+  try {
+    const { productId, count } = req.body;
+
+    const user = await userModel.findById(req.user.id);
+
+    const item = user.products.find(
+      (p) => p.productId.toString() === productId
+    );
+
+    if (!item) {
+      return res.status(404).json({
+        message: "Product not found in cart",
+      });
+    }
+
+    item.count = count;
+
+    await user.save();
+
+    res.json({
+      message: "Quantity updated successfully",
+    });
+  } catch (err) {
+    res.status(500).json({
+      message: err.message,
+    });
+  }
+});
+
 router.post("/addCart", async (req, res) => {
     try {
         const { productId } = req.body;

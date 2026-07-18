@@ -11,6 +11,8 @@
   const userModel = require("./models/userModel");
   const cookieParser = require("cookie-parser");
   const authAdminMiddleware = require("./middleware/authAdminMiddleware");
+  const chatRoutes = require("./routes/chatRoutes")
+
   // const multer = require("multer");
 
 
@@ -65,6 +67,8 @@ app.use(
   app.set("trust proxy", 1);
 
   // app.use("/",indexRouter);
+  app.use("/chat", chatRoutes);
+
   app.use("/users", UserRouter);
   app.use("/products", authUserMiddleware, ProductRouter);
   // const storage = multer.memoryStorage();

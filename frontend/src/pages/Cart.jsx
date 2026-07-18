@@ -151,6 +151,25 @@ const Cart = () => {
     };
   }
 
+  const updateQuantity = async (productId, count) => {
+    try {
+      const res = await axios.put(
+        `${API_URL}/products/updateCart`,
+        {
+          productId,
+          count,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+
+      console.log(res.data);
+    } catch (err) {
+      console.log(err.response?.data);
+    }
+  };
+
 
 
 
@@ -344,18 +363,16 @@ const Cart = () => {
 
   return (
     // <div className=' w-full min-h-screen mt-36 text-black lg:px-15 font-serif'>
-     <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white mt-20">
+    <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white mt-20">
       {/* Flash Messages */}
       {flash.show && (
         <div
-          className={`fixed top-6 right-6 z-50 transition-all duration-500 ease-in-out ${
-            flash.animate ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
-          }`}
+          className={`fixed top-6 right-6 z-50 transition-all duration-500 ease-in-out ${flash.animate ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
+            }`}
         >
           <div
-            className={`px-6 py-4 rounded-lg shadow-lg text-white flex items-center gap-3 ${
-              flash.type === 'success' ? 'bg-emerald-600' : 'bg-red-600'
-            }`}
+            className={`px-6 py-4 rounded-lg shadow-lg text-white flex items-center gap-3 ${flash.type === 'success' ? 'bg-emerald-600' : 'bg-red-600'
+              }`}
           >
             {flash.type === 'success' ? (
               <CheckCircle className="w-5 h-5" />
@@ -443,19 +460,22 @@ const Cart = () => {
                         <button
                           // onClick={() => decrease(product._id)}
                           // onClick={() => setCount((prev) => Math.max(1, prev - 1))}
+                          onClick={() => updateQuantity(product._id, count - 1)}
                           className="p-2 hover:bg-slate-100 transition-colors text-slate-600"
                           aria-label="Decrease quantity"
                         >
                           <ChevronDown className="w-5 h-5" />
                         </button>
-                        <span className="flex-1 text-center font-semibold py-2">
-                       
+                        <span className="flex-1 text-center text-black font-semibold py-2">
+                          {count}
                         </span>
-                      
-                          {/* {getQuantity(product._id)} */} 
+
+                        {/* {getQuantity(product._id)} */}
+
                         <button
                           // onClick={() => increase(product._id)}
                           // onClick={() => setCount((prev) => prev + 1)}
+                          onClick={() => updateQuantity(product._id, count + 1)}
                           className="p-2 hover:bg-slate-100 transition-colors text-slate-600"
                           aria-label="Increase quantity"
                         >
@@ -569,7 +589,7 @@ const Cart = () => {
                 </div>
               </div>
 
-              <button onClick={()=>payNow()} className="w-full bg-emerald-600 text-white font-semibold py-4 rounded-lg hover:bg-emerald-700 transition-colors duration-300 shadow-lg hover:shadow-xl">
+              <button onClick={() => payNow()} className="w-full bg-emerald-600 text-white font-semibold py-4 rounded-lg hover:bg-emerald-700 transition-colors duration-300 shadow-lg hover:shadow-xl">
                 Proceed to Checkout
               </button>
 
