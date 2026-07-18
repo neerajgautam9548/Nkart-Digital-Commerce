@@ -281,8 +281,10 @@ function ChatBot() {
               placeholder="Search products or ask anything..."
               style={{
                 color: "black",
+                backgroundColor: "white",
                 flex: 1,
-                padding: 12,
+                padding: "10px 15px",
+              
                 borderRadius: 10,
                 border: "1px solid #ddd",
                 outline: "none",
@@ -300,7 +302,7 @@ function ChatBot() {
                 cursor: "pointer",
               }}
             >
-              <Send size={20} />
+              <Send className="ml-3" size={20} />
             </button>
           </div>
         </div>
