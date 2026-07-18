@@ -11,7 +11,7 @@ function ChatBot() {
     {
       sender: "bot",
       text:
-        "👋 Welcome to ShopEase! I'm your AI Shopping Assistant. I can help you find products, compare items, track orders, check delivery status, and answer any shopping questions.",
+        "👋 Welcome to Nkarinida AI! I'm your personal shopping assistant. I can help you discover products, recommend the best deals, compare items, track your orders, answer your shopping questions, and make your shopping experience fast and easy. How can I assist you today?",
     },
   ]);
 
@@ -41,7 +41,7 @@ function ChatBot() {
         {
           sender: "bot",
           text:
-            "❌ Sorry! I couldn't process your request. Please try again in a moment."
+            "❌ Nkarinida AI couldn't complete your request right now. Please try again in a few moments."
         },
       ]);
     }
@@ -54,7 +54,7 @@ function ChatBot() {
       {/* Floating Button */}
       {!open && (
         <button
-          title="AI Shopping Assistant"
+          title="Smart Shopping Assistant • Online 24/7"
           onClick={() => setOpen(true)}
           style={{
             position: "fixed",
@@ -149,12 +149,14 @@ function ChatBot() {
               }}
             >
               {[
-                "🛍️ Best Deals",
-                "📦 Track Order",
-                "🚚 Shipping",
-                "💳 Payment",
-                "🎁 Offers",
-                "🔄 Return Policy",
+                "🔥 Trending Products",
+                "🛍️ Shop by Category",
+                "📦 Track My Order",
+                "🚚 Delivery Information",
+                "💳 Payment Support",
+                "🎁 Today's Offers",
+                "⭐ Best Sellers",
+                "🔄 Returns & Refunds",
               ].map((item) => (
                 <button
                   key={item}
@@ -178,7 +180,7 @@ function ChatBot() {
                         ...prev,
                         {
                           sender: "bot",
-                          text: "❌ Sorry! Please try again.",
+                          text: "❌ Nkarinida AI is temporarily unavailable. Please try again shortly.",
                         },
                       ]);
                     }
@@ -258,7 +260,7 @@ function ChatBot() {
                 }}
               >
                 <Bot size={20} color="#2563eb" />
-                <span>🛍️ Finding the best products...</span>
+                <span>🤖 Nkarinida AI is finding the best products for you...</span>
               </div>
             )}
           </div>
@@ -278,13 +280,13 @@ function ChatBot() {
               onKeyDown={(e) =>
                 e.key === "Enter" && handleSend()
               }
-              placeholder="Search products or ask anything..."
+              placeholder="Ask Nkarinida AI... (e.g. Best laptops under ₹50,000)"
               style={{
                 color: "black",
                 backgroundColor: "white",
                 flex: 1,
                 padding: "10px 15px",
-              
+
                 borderRadius: 10,
                 border: "1px solid #ddd",
                 outline: "none",
