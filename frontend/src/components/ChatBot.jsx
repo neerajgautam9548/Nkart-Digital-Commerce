@@ -55,7 +55,7 @@ function ChatBot() {
       {!open && (
         <button
           title="Smart Shopping Assistant • Online 24/7"
-          onClick={() => setOpen(true)}
+          onClick={() => setOpen(true)} 
           style={{
             position: "fixed",
             bottom: 25,
@@ -64,7 +64,7 @@ function ChatBot() {
             height: 65,
             borderRadius: "50%",
             border: "none",
-            background: "#2563eb",
+            background: "#335c3e",
             color: "#fff",
             cursor: "pointer",
             boxShadow: "0 10px 30px rgba(37,99,235,.4)",
@@ -95,7 +95,8 @@ function ChatBot() {
           {/* Header */}
           <div
             style={{
-              background: "linear-gradient(90deg,#2563eb,#4f46e5)",
+              // background: "linear-gradient(90deg,#2563eb,#4f46e5)",
+              background: "#335c3e",
               color: "#fff",
               padding: 18,
               display: "flex",
@@ -146,6 +147,7 @@ function ChatBot() {
                 flexWrap: "wrap",
                 gap: "8px",
                 marginBottom: "20px",
+                color: "#335c3e",
               }}
             >
               {[
@@ -158,7 +160,7 @@ function ChatBot() {
                 "⭐ Best Sellers",
                 "🔄 Returns & Refunds",
               ].map((item) => (
-                <button
+                <button 
                   key={item}
                   onClick={async () => {
                     setMessages((prev) => [
@@ -230,7 +232,7 @@ function ChatBot() {
                     style={{
                       background:
                         msg.sender === "user"
-                          ? "linear-gradient(135deg,#2563eb,#4f46e5)"
+                          ? "#335c3e"
                           : "#fff",
                       color: msg.sender === "user" ? "#fff" : "#222",
                       padding: "12px 16px",
@@ -296,7 +298,8 @@ function ChatBot() {
             <button
               onClick={handleSend}
               style={{
-                background: "#2563eb",
+                // background: "#2563eb",
+                background: "#335c3e",
                 color: "#fff",
                 border: "none",
                 width: 50,
